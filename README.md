@@ -161,3 +161,62 @@ src/
 │── assets/
 │── App.jsx
 │── main.jsx
+
+
+---
+
+## Screenshots
+
+_Add your screenshots here (Home, Shop, Product Page, Cart, etc.)_
+/*<img width="200" height="200" alt="Screenshot from 2026-04-14 16-23-40" src="https://github.com/user-attachments/assets/2f972db5-6a5d-4014-89df-c955feb97f5e" />*/
+
+
+---
+
+## Live Demo
+ vercel live demo link - https://e-commerce-react-app-vert.vercel.app/
+
+---
+
+## Getting Started
+
+### 1. Clone the repo
+git clone https://github.com/Damu987/E-commerce-react-app.git
+
+
+### 2. Install dependencies
+
+1. npm install
+2. If you want to install manually (for learning)
+ Core React + Router + Icons
+npm install react react-dom react-router-dom react-icons
+
+
+
+### 3. Run the app
+
+npm run dev
+
+
+---
+
+## Future Improvements
+
+- Wishlist feature 
+- Payment gateway integration 
+- User authentication with backend 
+- Order history 
+- Admin dashboard 
+
+---
+
+## Author
+
+**Damini S**  
+Frontend Developer (Fresher)
+
+---
+
+##  Show Your Support
+
+If you like this project, give it a ⭐ on GitHub!
