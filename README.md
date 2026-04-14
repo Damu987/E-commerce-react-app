@@ -101,3 +101,63 @@ LUXE is a modern, responsive e-commerce web application built using React.js. It
 ---
 
 ## Project Structure
+
+src/
+│── components/
+│ ├── common/
+| |--------ProductCard.jsx
+| |--------ProductCard.css
+| |--------ProductSkeleton.jsx
+| |--------ProductSkeleton.css
+| |--------Toast.jsx
+| |--------Toast.css
+| |--------ScrollToTop.jsx
+| |--------Spinner.css
+| |--------Spinner.jsx
+| |--------SmallSpinner.jsx
+│ ├── layout/
+| |------Header.jsx
+| |------Header.css
+| |------Footer.jsx
+| |------Footer.jsx
+| |------Layout.jsx
+│
+│── pages/
+│ ├── Home.jsx
+│ ├── Home.css
+│ ├── Shop.jsx
+│ ├── Shop.css
+│ ├── Deals.jsx
+| |___Deals.css
+│ ├── About.jsx
+│ ├── About.css
+│
+│── context/
+| |---------AuthContext.jsx
+| |---------CartContext.jsx
+|___features/
+| |_______auth/
+| |------------RequireAuth.jsx
+| |------------Signin.jsx
+| |------------Signup.jsx
+| |------------Signup.css
+| |_______cart/
+| |-------------Cart.jsx
+| |-------------Cart.css
+| |_______checkout/
+| |-----------Checkout.jsx
+| |-----------Checkout.css
+| |_______product/
+| |-----------ProductDetail.jsx
+| |-----------ProductDetail.css
+| |_______loaders/
+| |-----------dealloader.js
+| |-----------homeloader.js
+| |-----------productloader.js
+| |-----------shoploader.js
+| |_______-utils/
+| |----------cartUtils.js
+| |----------Currency.js
+│── assets/
+│── App.jsx
+│── main.jsx
