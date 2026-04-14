@@ -1,0 +1,135 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+.shop-container {
+  padding: 2rem;
+  background-color: var(--primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Header */
+.shop-header {
+  margin-bottom: 1rem;
+}
+
+.shop-title {
+  font-size: 2rem;
+}
+
+.shop-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.filter-group{
+  margin-right: 20px;
+}
+
+.search-input,
+.sort-dropdown {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Category */
+.category-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.category-btn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #444;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.category-btn.active {
+  background: var(--accent-green);
+}
+
+/* Reset */
+.reset-btn {
+  border: 1px solid #444;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Grid */
+.product-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Empty */
+.empty-state {
+  text-align: center;
+  margin-top: 2rem;
+}
+.load-more-btn {
+  padding: 12px 24px;
+  background: var(--primary-button);
+  border: none;
+  border-radius: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.load-more-btn:hover {
+  background: #22c55e;
+  transform: translateY(-1px);
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .sort-dropdown,
+  .reset-btn {
+    width: 100%;
+  }
+}

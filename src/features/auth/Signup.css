@@ -1,0 +1,138 @@
+/* This ensures padding never pushes an element wider than its defined width */
+.signup-card *,
+.signin-card *,
+.signup-card *::before,
+.signup-card *::after {
+  box-sizing: border-box;
+}
+
+.signup-container,
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--primary);
+  padding: 20px; 
+}
+
+/* Card */
+.signup-card,
+.signin-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 1.5rem; 
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--mono);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Input Wrapper */
+.input-icon {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon input {
+  width: 100%; 
+  display: block;
+  padding: 0.5rem 2.5rem; 
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: var(--image-bg);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-icon input:focus {
+  outline: none;
+  border-color: var(--accent-green);
+}
+
+/* Icon Positioning Fix */
+.icon-left {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  pointer-events: none; 
+}
+
+.icon-right {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Error message fix */
+.error,
+.errmsg {
+  width: 100%;
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0.3rem 0.2rem 0.3rem 0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+/* Buttons */
+
+.signup-button,
+.signin-btn {
+width: 100%;
+margin-top: 0.8rem;
+padding: 0.6rem 1rem;
+border: none;
+border-radius: 5px;
+background-color: var(--primary);
+color: var(--text-primary);
+font-weight: 600;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.9rem;
+}
+
+
+
+.signup-button:hover:not(:disabled),
+.signin-btn:hover:not(:disabled) {
+background-color: var(--accent-green);
+}
+
+
+
+.signup-button:disabled,
+.signin-btn:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+
+}
+/* Mobile Tweak */
+@media (max-width: 500px) {
+  .signup-container,
+  .auth-container {
+    padding: 1rem;
+    align-items: center; 
+  }
+
+  .signup-card,
+  .signin-card {
+    padding: 1.5rem;
+  }
+}

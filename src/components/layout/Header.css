@@ -1,0 +1,170 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  background: var(--dark-nav);
+  border-bottom: 1px solid var(--card-bg);
+  backdrop-filter: blur(8px);
+}
+
+/* Logo */
+.site-logo {
+  color: var(--text-primary);
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 1.3rem;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  font-family: var(--mono);
+  transition: 0.3s;
+}
+
+/*Active Link */
+.nav-links a.active {
+  color: var(--accent-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Buttons */
+.cart-btn,
+.auth-btn,
+.logout-btn {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Buttons UI */
+.cart-btn, .auth-btn {
+  background: var(--accent-green);
+  color: var(--text-primary);
+}
+.cart-btn:hover, .auth-btn:hover {
+  background: var(--text-primary);
+  transform: scale(1.05);
+}
+
+.logout-btn {
+  background: #d80c0c;
+  color: var(--text-primary);
+}
+.logout-btn:hover {
+  background: var(--accent-logout) ;
+}
+
+/* Icon auth */
+.icon-auth {
+  position: relative;
+  font-size: 20px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dark-nav);
+  color: var(--text-primary);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.icon-auth:hover .tooltip {
+  opacity: 1;
+}
+
+/* Mobile Only */
+.mobile-only {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* Hamburger */
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .right-section {
+    display: none;
+  }
+
+  .nav-links {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  flex-direction: column;
+  background: #1f1f1f;
+  width: 260px;
+  height: 100vh;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-links.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+  .mobile-only {
+    display: flex;
+  }
+}
