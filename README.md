@@ -1,18 +1,103 @@
-# React + Vite
+# LUXE - Modern E-Commerce Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LUXE is a modern, responsive e-commerce web application built using React.js. It provides a smooth shopping experience with optimized performance, clean UI, and real-world features like filtering, cart management, and checkout flow.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+### Home Page
+- Hero section with promotional banner (20% OFF)
+- Category showcase with images
+- Featured products section
+- Promo banner for special offers
+- Newsletter subscription section
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+### Shop Page
+- Product listing with dynamic data
+- Category-based filtering
+- Search functionality
+- Sorting (Low → High / High → Low)
+- "Load More" functionality (pagination after 8 products)
+- Skeleton loading UI for better UX
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Product Details Page
+- Product image & detailed information
+- Price, discount, and rating display
+- Add to Cart & Buy Now buttons
+- Apply coupon option
+- Back navigation button
+
+---
+
+### 🛍️ Cart Page
+- Displays selected products
+- Quantity handling
+- Price calculation
+- Persistent cart using context
+
+---
+
+### Authentication
+- Sign In form
+- Sign Up form
+- Basic authentication flow
+
+---
+
+### Checkout Page
+- Order summary
+- Pricing breakdown
+- Checkout flow UI
+
+---
+
+### Deals Page
+- Special offers and discounted products
+
+---
+
+## Components Structure
+
+### Common Components
+- `ProductCard` → Displays product UI
+- `ProductSkeleton` → Loading placeholder
+- `Spinner` → Loading indicator
+- `Toast` → Notifications
+- `Layout` → Page structure wrapper
+
+### Layout Components
+- `Header` → Navigation bar (responsive)
+- `Footer` → Footer section
+
+---
+
+## Performance Optimizations
+
+- Lazy loading images (`loading="lazy"`)
+- Image optimization using WebP format
+- Skeleton loaders for smooth UX
+- Efficient rendering using React hooks
+- Reduced bundle size
+
+---
+
+## Tech Stack
+
+- React.js
+- React Router DOM 7
+- Context API (State Management)
+- CSS (Custom Styling)
+- State Management
+- API Integration (dummyjson)
+- Hooks (useRef, useState, useEffect)
+- Async, await
+- React Icons
+
+---
+
+## Project Structure
