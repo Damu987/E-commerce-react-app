@@ -18,13 +18,13 @@ function QuantityControl({ quantity, onIncrement, onDecrement, disabled = false 
   return (
     <div className="quantity-box">
       <button className="qty-btn" onClick={onDecrement} disabled={quantity === 1 || disabled}>
-        <FiMinus />
+        <FiMinus className="qty-icon" />
       </button>
 
       <span className="qty-display">{quantity}</span>
 
       <button className="qty-btn" onClick={onIncrement} disabled={disabled}>
-        <FiPlus />
+        <FiPlus className="qty-icon" />
       </button>
     </div>
   );
@@ -69,7 +69,7 @@ function CouponInput({ value, onChange, onApply, error, applied, loading = false
           className="coupon-input"
         />
         <button className="coupon-btn" onClick={onApply} disabled={applied || loading}>
-          {applied ? "Applied ✓" : "Apply"}
+          {applied ? "Applied" : "Apply"}
         </button>
       </div>
 
@@ -190,7 +190,7 @@ export default function ProductDetail() {
 
   const handleBuyNow = () => {
     addToCart({ ...product, price: priceInfo.discountedPrice }, state.quantity);
-    navigate("/cart");
+    navigate("/checkout");
   };
 
   if (!product) return <p>Product not found</p>;

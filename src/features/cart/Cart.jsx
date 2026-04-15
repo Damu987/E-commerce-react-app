@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import Toast from "../../components/common/Toast";
 import { calculateTotals } from "../../utils/cartUtils";
 import { FiTrash2, FiShoppingBag, FiMinus, FiPlus } from "react-icons/fi";
 import "./Cart.css";
 
 function Cart() {
   const navigate = useNavigate();
+  const [toast, setToast] = useState({ show: false, message: ""});
   const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   // Use centralized calculation utility for consistency with Checkout
@@ -31,8 +34,21 @@ function Cart() {
     );
   }
 
+  const handleRemove = (id, title) => {
+    removeFromCart(id);
+    setToast({
+      show: true,
+      message: `Removed ${title} from cart`,
+    });
+    setTimeout(() => {
+      setToast({ show: false, message: ""});
+    }, 3000);
+  };
+
   return (
     <main className="cart-page" aria-labelledby="cart-heading">
+
+      <Toast show={toast.show} message={toast.message} />
       <h1 id="cart-heading">
         Your Cart ({totalItems} {totalItems === 1 ? "item" : "items"})
       </h1>
@@ -129,7 +145,7 @@ function Cart() {
 
               <button
                 className="remove-btn"
-                onClick={() => removeFromCart(product.id)}
+                onClick={() => handleRemove(product.id, product.title)}
                 aria-label={`Remove ${product.title} from cart`}
               >
                 <FiTrash2 aria-hidden="true" />

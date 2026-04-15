@@ -87,7 +87,7 @@
   flex-direction: column;
   gap: var(--space-2xl);
   padding: var(--space-2xl) var(--space-lg);
-  background: linear-gradient(135deg, var(--text-primary) 0%, rgb(209, 204, 204) 100%);
+  background: linear-gradient(135deg, var(--dark-nav) 0%, var(--primary) 100%);
   position: relative;
   overflow: clip;
 }
@@ -150,7 +150,7 @@
 .hero-heading {
   font-size: clamp(2.25rem, 8vw, 3.5rem);
   font-family: var(--serif);
-  color: var(--card-bg);
+  color: var(--text-primary);
   line-height: 1.1;
   margin: 0;
   font-weight: 800;
@@ -165,7 +165,7 @@
 
 .description {
   font-size: 1.05rem;
-  color: var(--image-bg);
+  color: var(--text-secondary);
   max-width: 550px;
   line-height: 1.7;
   margin: 0;
@@ -210,8 +210,8 @@
 
 .btn-secondary {
   background: transparent;
-  border-color: var(--card-bg);
-  color: var(--card-bg);
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
 }
 
 .btn-primary:hover,
@@ -418,8 +418,8 @@
 
 /* ===== FEATURED PRODUCTS SECTION ===== */
 .featured-section {
-  background: var(--card-bg);
-  border-radius: 24px;
+  background: var(--primary);
+  border-top: 1px solid var(--text-muted);
   margin: var(--space-lg) auto;
   box-shadow: var(--shadow-sm);
 }
@@ -581,7 +581,7 @@
 
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter-section {
-  background: linear-gradient(135deg, var(--text-primary) 0%, #1a1a1a 100%);
+  background: var(--dark-nav);
   padding: var(--space-2xl) var(--space-lg);
   margin: var(--space-2xl) 0 0 0;
   text-align: center;
@@ -600,11 +600,6 @@
     transform: translateX(-50%);
     width: 800px;
     height: 800px;
-    background: radial-gradient(
-      circle,
-      rgba(74, 222, 128, 0.08) 0%,
-      transparent 70%
-    );
     border-radius: 50%;
   }
 }
@@ -646,8 +641,8 @@
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-lg);
   border: 2px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--card-bg);
+  background: var(--dark-nav);
+  color: var(--text-primary);
   font-family: var(--sans);
   outline: none;
   transition: all var(--transition-normal);

@@ -31,7 +31,7 @@
   align-items: center;
   gap: 1.2rem;
   padding: 1.2rem;
-  background-color: var(--card-bg);
+  background-color: var(--dark-nav);
   border-radius: 10px;
   border: 1px solid #333;
   transition: all 0.2s;
@@ -40,7 +40,7 @@
 
 .cart-item:hover {
   border-color: var(--primary-button);
-  background-color: var(--image-bg);
+  background-color: var(--primary);
 }
 
 /* Focus visible for keyboard navigation */
@@ -122,7 +122,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: var(--image-bg);
+  background-color: var(--text-primary);
+  color: var(--card-bg);
   border: 1px solid #444;
   border-radius: 8px;
   padding: 8px 14px;
@@ -131,7 +132,7 @@
 .quantity-controls button {
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  color: var(--card-bg);
   font-size: 1rem;
   cursor: pointer;
   display: flex;
@@ -154,7 +155,7 @@
 }
 
 .quantity-controls button:disabled {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--card-bg);
   cursor: not-allowed;
   opacity: 0.5;
 }
@@ -195,7 +196,7 @@
 
 /* Summary */
 .cart-summary {
-  background-color: var(--image-bg);
+  background-color: var(--dark-nav);
   border: 1px solid #333;
   border-radius: 12px;
   padding: 1.5rem;

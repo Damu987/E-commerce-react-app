@@ -17,6 +17,11 @@
   margin-bottom: 1rem;
 }
 
+.search-btn, .sort-btn{
+  background-color: var(--text-primary);
+  color: var(--card-bg);
+}
+
 .shop-title {
   font-size: 2rem;
 }
@@ -41,9 +46,9 @@
 .sort-dropdown {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #333;
-  background: var(--card-bg);
-  color: var(--text-primary);
+  border: 1px solid var(--dark-nav);
+  background: var(--text-primary);
+  color: var(--dark-nav);
 }
 
 /* Category */
@@ -58,8 +63,8 @@
   padding: 6px 12px;
   border-radius: 20px;
   border: 1px solid #444;
-  background: transparent;
-  color: var(--text-primary);
+  background: var(--text-primary);
+  color: var(--card-bg);
   cursor: pointer;
 }
 

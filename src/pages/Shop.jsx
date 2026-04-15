@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useLoaderData, useSearchParams, useNavigation } from "react-router-dom";
 import ProductCard from "../components/common/ProductCard";
 import ProductSkeleton from "../components/common/ProductSkeleton";
+import Toast from "../components/common/Toast";
 import "./Shop.css";
 
 function Shop() {
@@ -20,12 +21,40 @@ function Shop() {
   // LOAD MORE STATE
   const [visibleCount, setVisibleCount] = useState(8);
 
+  // TOAST STATE
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  // SEARCH INPUT STATE (LOCAL) - prevents immediate URL updates
+  const [searchInput, setSearchInput] = useState(search);
+
   // RESET WHEN FILTER CHANGES
   useEffect(() => {
     setVisibleCount(8);
   }, [category, search, sort]);
 
-  const updateParams = (newParams) => {
+  // DEBOUNCED SEARCH - waits 500ms before updating URL params
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchInput !== search) {
+        updateParams({ search: searchInput });
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
+  // AUTO-HIDE TOAST AFTER 3 SECONDS
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
+  const updateParams = useCallback((newParams) => {
     const params = {
       category: newParams.category ?? category,
       search: newParams.search ?? search,
@@ -37,7 +66,13 @@ function Shop() {
     if (!params.sort) delete params.sort;
 
     setSearchParams(params);
-  };
+  }, [category, search, sort, setSearchParams]);
+
+  // HANDLE ADD TO CART - shows toast notification
+  const handleAddToCart = useCallback((productName) => {
+    setToastMessage(`✓ ${productName} added to cart!`);
+    setShowToast(true);
+  }, []);
 
   // FILTER PRODUCTS
   let filteredProducts = products.filter((product) => {
@@ -61,6 +96,9 @@ function Shop() {
 
   return (
     <main className="shop-container">
+      {/* TOAST NOTIFICATION */}
+      <Toast message={toastMessage} show={showToast} />
+
       {isLoading ? (
         <ul className="product-grid">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -75,17 +113,19 @@ function Shop() {
             <p>{filteredProducts.length} products found</p>
           </header>
 
-          {/* SEARCH */}
+          {/* SEARCH & FILTERS */}
           <section className="filters">
             <input
               type="text"
+              className="search-btn"
               placeholder="Search products..."
-              value={search}
-              onChange={(e) => updateParams({ search: e.target.value })}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
             />
 
             <select
               value={sort}
+              className="sort-btn"
               onChange={(e) => updateParams({ sort: e.target.value })}
             >
               <option value="">Sort</option>
@@ -93,7 +133,10 @@ function Shop() {
               <option value="price-high">High → Low</option>
             </select>
 
-            <button onClick={() => setSearchParams({})}>
+            <button onClick={() => {
+              setSearchParams({});
+              setSearchInput("");
+            }}>
               Reset
             </button>
           </section>
@@ -113,16 +156,31 @@ function Shop() {
 
           {/* PRODUCTS */}
           <section className="product-grid">
-            {filteredProducts.slice(0, visibleCount).map((product) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.title}
-                price={Math.round(product.price * 84)}
-                image={product.image} loading="lazy" width="200" height="200"
-                product={product}
-              />
-            ))}
+            {filteredProducts.slice(0, visibleCount).map((product) => {
+              // Convert price to INR (multiply by 84)
+              const priceInINR = Math.round(product.price * 84);
+              
+              // Create product object with converted price for cart
+              const productForCart = {
+                ...product,
+                price: priceInINR,
+              };
+              
+              return (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.title}
+                  price={priceInINR}
+                  image={product.image}
+                  loading="lazy"
+                  width="200"
+                  height="200"
+                  product={productForCart}
+                  onAddToCart={() => handleAddToCart(product.title)}
+                />
+              );
+            })}
           </section>
 
           {/* LOAD MORE BUTTON */}

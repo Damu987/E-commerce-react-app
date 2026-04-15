@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, useLoaderData, useNavigation } from "react-router-dom";
 import ProductCard from "../components/common/ProductCard";
+import Toast from "../components/common/Toast";
 import Spinner from "../components/common/Spinner";
 import { 
   FiTruck, 
@@ -18,11 +20,26 @@ import image from "../assets/image1.webp"
 import "./Home.css";
 
 function Home() {
-  const navigation = useNavigation();
+ const navigation = useNavigation();
   const isLoading = navigation.state === "loading";
   const USD_TO_INR = 84;
   const { featured = [], categories = [] } = useLoaderData();
 
+  // --- Toast State Logic ---
+  const [toast, setToast] = useState({ show: false, message: "" });
+
+  const triggerToast = (productName, priceUsd) => {
+    // We calculate the INR price here to match exactly what is shown on the card
+    const priceInInr = Math.round(priceUsd * USD_TO_INR);
+    setToast({
+      show: true,
+      message: `Added ${productName} (₹${priceInInr.toLocaleString("en-IN")}) to cart!`,
+    });
+
+    setTimeout(() => {
+      setToast({ show: false, message: "" });
+    }, 3000);
+  };
   // CATEGORY GROUPING WITH IMAGES (Updated for DummyJSON)
   const categoryGroups = [
     {
@@ -64,6 +81,8 @@ function Home() {
 
   return (
     <main className="home-page">
+      {/* Toast component*/}
+      <Toast message={toast.message} show={toast.show} />
       {/* ===== HERO ===== */}
       <section className="hero">
         <div className="hero-left fade-up">
@@ -176,28 +195,45 @@ function Home() {
             <Spinner />
           ):(
         <ul className="product-grid">
-          {featured.slice(0,4).map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              name={product.title}
-              price={Math.round(product.price * USD_TO_INR)}
-              oldPrice={
-                product.discountPercentage
-                  ? Math.round(
-                      (product.price /
-                      (1 - product.discountPercentage / 100)) * USD_TO_INR
-                    )
-                  : null
-              }
-              image={product.thumbnail || product.images?.[0]} loading="lazy" width="200" height="200"
-              product={product}
-              rating={product.rating}
-              discount={product.discountPercentage}
-            />
-          ))}
+          {featured.slice(0, 4).map((product) => {
+            // 1. Calculate the INR price (Standardizing to 84)
+            const priceInINR = Math.round(product.price * USD_TO_INR);
+            const displayImage = product.image || product.thumbnail || product.images?.[0];
+            const productForCart = {
+              ...product,
+              price: priceInINR,
+              image: displayImage,
+            };
+        
+            return (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                name={product.title}
+                price={priceInINR}
+                oldPrice={
+                  product.discountPercentage
+                    ? Math.round(
+                        (product.price / (1 - product.discountPercentage / 100)) *
+                          USD_TO_INR
+                      )
+                    : null
+                }
+                image={displayImage}
+                loading="lazy"
+                width="200"
+                height="200"
+                // Pass the MODIFIED product object here
+                product={productForCart}
+                rating={product.rating}
+                discount={product.discountPercentage}
+                // Pass product.price (raw USD) to triggerToast so it can do its own conversion
+                onAddToCart={() => triggerToast(product.title, product.price)}
+              />
+            );
+          })}
         </ul>
-        ) }
+     ) }
       </section>
   {/* ===== PROMO BANNER ===== */}
       <section className="banner-container fade-up">

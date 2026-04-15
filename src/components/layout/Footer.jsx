@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
 import "./Footer.css";
 
 const footerLinks = [
@@ -13,7 +14,8 @@ const footerLinks = [
 const socialLinks = [
   { label: "LinkedIn", icon: <FaLinkedin />, path: "https://linkedin.com" },
   { label: "Twitter", icon: <FaTwitter />, path: "https://twitter.com" },
-  { label: "Instagram", icon: <FaInstagram />, path: "https://instagram.com" },
+  { label: "Email", icon: <FiMail />, path: "mailto:support@yourdomain.com" 
+}
 ];
 
 function Footer() {

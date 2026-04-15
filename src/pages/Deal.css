@@ -118,7 +118,7 @@
 
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter-section {
-  background: var(--image-bg);
+  background: var(--dark-nav);
   border-radius: var(--radius-xl);
   padding: var(--space-2xl) var(--space-xl);
   text-align: center;

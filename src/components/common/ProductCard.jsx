@@ -12,7 +12,8 @@ function ProductCard({
   image, 
   product,
   rating,
-  discount 
+  discount,
+  onAddToCart 
 }) {
   const { addToCart } = useCart();
 
@@ -26,6 +27,19 @@ function ProductCard({
 
   // Memoize star rendering - avoid recalculating on every render
   const stars = Array.from({ length: 5 }, (_, i) => i < Math.round(ratingValue));
+
+  const handleAddToCartClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    // Add to cart
+    addToCart(product, 1);
+    
+    // Trigger toast notification
+    if (onAddToCart) {
+      onAddToCart(name);
+    }
+  };
 
   return (
     <li className="product-item">
@@ -134,11 +148,7 @@ function ProductCard({
             {/* Add to Cart Button */}
             <button
               className="add-to-cart-btn"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                addToCart(product, 1);
-              }}
+              onClick={handleAddToCartClick}
               aria-label={`Add ${name} to cart`}
               type="button"
             >

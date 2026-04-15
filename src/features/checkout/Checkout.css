@@ -25,7 +25,7 @@
 
 /*  Left Side: Forms */
 .checkout-left {
-  background-color: var(--card-bg);
+  background-color: var(--dark-nav);
   border: 1px solid #333;
   border-radius: 12px;
   padding: 2rem;
@@ -48,22 +48,22 @@
   width: 100%;
   padding: 0.6rem 0rem 0.6rem 0.6rem;
   margin-bottom: 0.5rem;
-  background-color: #222;
+  background-color: var(--text-primary);
   border: 1px solid #444;
   border-radius: 8px;
-  color: var(--text-primary);
+  color: var(--card-bg);
   font-size: 0.95rem;
   transition: all 0.2s;
 }
 
 .checkout-left input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--image-bg);
 }
 
 .checkout-left input:focus {
   outline: none;
   border-color: var(--primary-button);
-  background-color: var(--image-bg);
+  background-color: var(--text-primary);
 }
 
 .checkout-left input:disabled {
@@ -92,7 +92,8 @@
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
-  background-color: #222;
+  background-color: var(--text-primary);
+  color: var(--card-bg);
   border: 1px solid #444;
   border-radius: 8px;
   cursor: pointer;
@@ -102,7 +103,7 @@
 
 .payment-options label:hover {
   border-color: var(--primary-button);
-  background-color: var(--card-bg);
+  background-color: var(--text-muted);
 }
 
 .payment-options input[type="radio"] {
@@ -116,6 +117,7 @@
 .payment-options label:has(input[type="radio"]:checked) {
   border-color: var(--primary-button);
   background-color: rgba(74, 222, 128, 0.1);
+  color: var(--text-primary);
 }
 
 /*UPI Section  */
@@ -123,7 +125,7 @@
 .card-section {
   margin-top: 1rem;
   padding: 1.25rem 2.5rem 1.25rem 1.25rem;
-  background-color: #222;
+  background-color: var(--dark-nav);
   border: 1px solid #444;
   border-radius: 8px;
 }
@@ -168,7 +170,7 @@
 
 /* Right Side: Order Summary */
 .checkout-right {
-  background-color: var(--image-bg);
+  background-color: var(--dark-nav);
   border: 1px solid #333;
   border-radius: 12px;
   padding: 1.5rem;
@@ -256,7 +258,7 @@
 }
 
 .modal-content {
-  background: #1a1a1a;
+  background: var(--dark-nav);
   border: 1px solid #333;
   padding: 2rem;
   border-radius: 12px;

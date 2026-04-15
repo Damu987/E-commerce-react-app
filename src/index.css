@@ -1,20 +1,22 @@
 /* ===== GLOBAL STYLES - OPTIMIZED FOR PERFORMANCE ===== */
 :root {
   /* Color System */
-  --primary: #111;
-  --dark-nav: #1a1a1a;
+  --primary: #0B1437;
+  --dark-nav: #1a234a;
+  --dark-bg: #283963;
   --card-bg: #2a2a2a;
   --page-bg: #141414;
   --image-bg: #1f1f1f;
   
   /* Text Colors */
-  --text-primary: #ffffff;
+  --text-primary: #F8F9FA;
   --text-heading: #e5e5e5;
   --text-body: #d1d1d1;
-  --text-muted: #9ca3af;
+  --text-muted: #A3AED0;
   
   /* Accent Colors */
-  --accent-green: rgb(4, 133, 4);
+  --accent-green: #00A800;
+  --accent-lime: #28C700;
   --primary-button: #4ade80;
   --primary-hover: #22c55e;
   --accent-error: #ef4444;
